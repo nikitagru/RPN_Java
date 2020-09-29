@@ -13,41 +13,41 @@ public class Main {
 
 //	    Scanner in = new Scanner(System.in);
 //	    String input = in.nextLine();
-	    InputStack stack = new InputStack(input);
-	    ResultStack resultStack = new ResultStack();
 
+//		InputStack stack = new InputStack(input);
+//	    ResultStack resultStack = new ResultStack();
+//
+//	    for (int i = 0; i < stack.Length(); i++) {
+//	    	String currentComponent = stack.GetComponent(i);
+//
+//	    	if (!stack.IsOperation(currentComponent)) {
+//	        	resultStack.Add(Integer.parseInt(currentComponent));
+//			} else {
+//				if (resultStack.Length() >= 2) {
+//					int last = Integer.parseInt(resultStack.Delete());
+//					int prev = Integer.parseInt(resultStack.Delete());
+//					int result = 0;
+//
+//					if (currentComponent.equals("+")) {
+//						result = prev + last;
+//					} else if (currentComponent.equals("-")) {
+//						result = prev - last;
+//					} else if (currentComponent.equals("*")) {
+//						result = prev * last;
+//					} else if (currentComponent.equals("/")) {
+//						result = prev / last;
+//					} else {
+//						throw new Exception("Invalid operation");
+//					}
+//
+//					resultStack.Add(result);
+//				} else {
+//					resultStack.Add(Integer.parseInt(currentComponent));
+//				}
+//			}
+//        }
+		RPN main = new RPN(input);
 
-
-	    for (int i = 0; i < stack.Length(); i++) {
-	    	String currentComponent = stack.GetComponent(i);
-
-	    	if (!stack.IsOperation(currentComponent)) {
-	        	resultStack.Add(Integer.parseInt(currentComponent));
-			} else {
-				if (resultStack.Length() >= 2) {
-					int last = Integer.parseInt(resultStack.Delete());
-					int prev = Integer.parseInt(resultStack.Delete());
-					int result = 0;
-
-					if (currentComponent.equals("+")) {
-						result = prev + last;
-					} else if (currentComponent.equals("-")) {
-						result = prev - last;
-					} else if (currentComponent.equals("*")) {
-						result = prev * last;
-					} else if (currentComponent.equals("/")) {
-						result = prev / last;
-					} else {
-						throw new Exception("Invalid operation");
-					}
-
-					resultStack.Add(result);
-				} else {
-					resultStack.Add(Integer.parseInt(currentComponent));
-				}
-			}
-        }
-
-		System.out.println(resultStack.StackToInt());
+		System.out.println(main.Compute());
     }
 }
