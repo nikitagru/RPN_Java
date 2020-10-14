@@ -12,13 +12,13 @@ public class Tests {
     }
 
     @Test
-    void simpleMore() throws Exception {
+    void simpleMore() {
         RPN calculator = new RPN("238*+4+5+");
         assertEquals(35, calculator.Compute());
     }
 
     @Test
-    void additionOfMultiplies() throws Exception {
+    void additionOfMultiplies() {
         RPN calculator = new RPN("45*89*+");
         assertEquals(92, calculator.Compute());
     }

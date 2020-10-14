@@ -8,8 +8,8 @@ import java.util.Stack;
 public class Main {
 
 
-    public static void main(String[] args) throws Exception {
-	    String input = "322";
+    public static void main(String[] args) {
+	    String input = "30/";
 
 //	    Scanner in = new Scanner(System.in);
 //	    String input = in.nextLine();

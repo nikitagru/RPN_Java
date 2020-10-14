@@ -12,16 +12,16 @@ public class RPN implements RPNMain {
 
     private String[] operations = new String[]{"+", "-", "*", "/"};
 
-    public boolean isCorrect = true;
+    public boolean isCorrect;
 
-    public RPN(String input) throws Exception {
+    public RPN(String input) {
         isCorrect = CheckException(input);
         for (int i = 0; i < input.length(); i++) {
             inputStack.push(input.substring(i,i + 1));
         }
     }
 
-    public int Compute() throws Exception {
+    public int Compute() {
 
         Stack<Integer> resultStack = new Stack<Integer>();
         for (int i = 0; i < inputStack.size(); i++) {
@@ -35,18 +35,28 @@ public class RPN implements RPNMain {
                     int prev = resultStack.pop();
                     int result = 0;
 
-                    if (currentComponent.equals("+")) {
-                        result = prev + last;
-                    } else if (currentComponent.equals("-")) {
-                        result = prev - last;
-                    } else if (currentComponent.equals("*")) {
-                        result = prev * last;
-                    } else if (currentComponent.equals("/")) {
-                        result = prev / last;
-                    } else {
-                        throw new Exception("Invalid operation");
+                    switch (currentComponent) {
+                        case "+":
+                            result = prev + last;
+                            break;
+                        case "-":
+                            result = prev - last;
+                            break;
+                        case "*":
+                            result = prev * last;
+                            break;
+                        case "/":
+                            if(last != 0) {
+                                result = prev / last;
+                            } else {
+                                System.out.println("Ошибка: деление на ноль");
+                                break;
+                            }
+                            break;
+                        default:
+                            System.out.println("Некорректная операция");
+                            break;
                     }
-
                     resultStack.push(result);
                 } else {
                     resultStack.push(Integer.parseInt(currentComponent));
@@ -64,7 +74,7 @@ public class RPN implements RPNMain {
         }
     }
 
-    private boolean CheckException(String input) throws Exception {
+    private boolean CheckException(String input) {
         int operationsCount = 0;
         int operandsCount = 0;
         if (input != null && input != " ") {
